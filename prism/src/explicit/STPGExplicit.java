@@ -35,7 +35,10 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import parser.VarList;
+
 import prism.ModelType;
+import prism.Prism;
 import prism.PrismLog;
 import prism.PrismUtils;
 import prism.PrismException;
@@ -642,6 +645,40 @@ public class STPGExplicit extends MDPSimple implements STPG
 			}
 		}
 		out.print("}\n");
+	}
+
+	@Override
+	public void exportStates(int exportType, VarList varList, PrismLog log) throws PrismException
+	{
+		if (statesList == null)
+			return;
+
+		// Print header: list of model vars
+		if (exportType == Prism.EXPORT_MATLAB)
+			log.print("% ");
+		log.print("id:(");
+		int numVars = varList.getNumVars();
+		for (int i = 0; i < numVars; i++) {
+			log.print(varList.getName(i));
+			if (i < numVars - 1)
+				log.print(",");
+		}
+		log.println(") player");
+		if (exportType == Prism.EXPORT_MATLAB)
+			log.println("states=[");
+
+		// Print states
+		int numStates = statesList.size();
+		for (int i = 0; i < numStates; i++) {
+			if (exportType != Prism.EXPORT_MATLAB)
+				log.println(i + ":" + statesList.get(i).toString() + " " + getPlayer(i));
+			else
+				log.println(statesList.get(i).toStringNoParentheses());
+		}
+
+		// Print footer
+		if (exportType == Prism.EXPORT_MATLAB)
+			log.println("];");
 	}
 
 	public boolean deadlocksAllowed()
