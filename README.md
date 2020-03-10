@@ -1,3 +1,7 @@
+# Personal branch
+This is a personal branch of PRISM games used for research purposed and hand-tinkering.
+The remainder of this readme is the original from PRISM games.
+
 # PRISM-games
 
 This is PRISM-games, an extension of the PRISM model checker
