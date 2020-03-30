@@ -3,6 +3,8 @@ This is a personal branch of PRISM games used for research purposes and hand-tin
 
 
 ## Build
+
+Build without multi-objective support.
 ~~~~
 cd prism
 make
