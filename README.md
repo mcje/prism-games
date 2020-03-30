@@ -1,6 +1,17 @@
 # Personal branch
-This is a personal branch of PRISM games used for research purposed and hand-tinkering.
-The remainder of this readme is the original from PRISM games.
+This is a personal branch of PRISM games used for research purposes and hand-tinkering.
+
+
+## Build
+~~~~
+cd prism
+make
+~~~~
+
+
+
+
+The remainder of this README is the original from PRISM games.
 
 # PRISM-games
 
